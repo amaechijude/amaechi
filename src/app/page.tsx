@@ -1,6 +1,7 @@
 import About from "@/components/shared/About";
 import Hero from "@/components/shared/Hero";
 import Navbar from "@/components/shared/Navbar";
+import Projects from "@/components/shared/Projects";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <Projects />
     </main>
   );
 }
