@@ -2,6 +2,7 @@ import About from "@/components/shared/About";
 import Hero from "@/components/shared/Hero";
 import Navbar from "@/components/shared/Navbar";
 import Projects from "@/components/shared/Projects";
+import Skills from "@/components/shared/Skills";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
+      <Skills />
     </main>
   );
 }
