@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Github, Linkedin, Twitter, MoveDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,13 +17,13 @@ const Hero = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 12,
       },
@@ -51,7 +52,7 @@ const Hero = () => {
             className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
             variants={itemVariants}
           >
-            Senior Software Engineer
+            Software Engineer
           </motion.h2>
           <motion.h1
             className="mt-2 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-600 md:text-6xl lg:text-7xl"
@@ -86,17 +87,26 @@ const Hero = () => {
               <Link href="#contact">Get In Touch</Link>
             </Button>
           </motion.div>
-          <motion.div
-            className="mt-8 flex space-x-6"
-            variants={itemVariants}
-          >
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <motion.div className="mt-8 flex space-x-6" variants={itemVariants}>
+            <Link
+              href="https://github.com/amaechijude"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Github className="h-6 w-6 text-slate-400 hover:text-violet-400 transition-colors duration-200 hover:scale-110" />
             </Link>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://www.linkedin.com/in/amaechi-ugwu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Linkedin className="h-6 w-6 text-slate-400 hover:text-violet-400 transition-colors duration-200 hover:scale-110" />
             </Link>
-            <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://x.com/amaechi_1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Twitter className="h-6 w-6 text-slate-400 hover:text-violet-400 transition-colors duration-200 hover:scale-110" />
             </Link>
           </motion.div>
@@ -109,9 +119,9 @@ const Hero = () => {
         >
           {/* Placeholder for a more complex visual like a 3D model or code animation */}
           <div className="w-80 h-80 rounded-full bg-gradient-to-tr from-violet-500/20 to-slate-800/20 flex items-center justify-center border border-slate-700">
-             <div className="w-64 h-64 rounded-full bg-gradient-to-bl from-slate-800/20 to-violet-500/20 flex items-center justify-center border border-slate-600">
-                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-violet-500/20 to-slate-800/20 border border-slate-500"></div>
-             </div>
+            <div className="w-64 h-64 rounded-full bg-gradient-to-bl from-slate-800/20 to-violet-500/20 flex items-center justify-center border border-slate-600">
+              <div className="w-48 h-48 rounded-full bg-gradient-to-br from-violet-500/20 to-slate-800/20 border border-slate-500"></div>
+            </div>
           </div>
         </motion.div>
       </div>

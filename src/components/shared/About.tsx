@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +21,7 @@ const About = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -73,20 +74,36 @@ const About = () => {
           </motion.h2>
           <motion.div variants={itemVariants}>
             <blockquote className="mt-6 border-l-4 border-violet-500 pl-4 text-xl italic text-slate-300">
-              "I believe the best software comes from a deep understanding of both the technical challenges and the human needs they serve."
+              &quot;I believe the best software comes from a deep understanding
+              of both the technical challenges and the human needs they
+              serve.&quot;
             </blockquote>
           </motion.div>
           <motion.p
             className="mt-6 text-lg text-slate-400"
             variants={itemVariants}
           >
-            For over 8 years, I've been building robust and scalable software solutions. My journey began not just with a fascination for code, but with a desire to solve real-world problems. I thrive on the challenge of architecting systems that are not only powerful and efficient but also clean, maintainable, and a pleasure to work on.
+            For over 2 years, I&apos;ve been building robust and scalable
+            software solutions. My journey began not just with a fascination for
+            code, but with a desire to solve real-world problems. I thrive on
+            the challenge of architecting systems that are not only powerful and
+            efficient but also clean, maintainable, and a pleasure to work on.
           </motion.p>
           <motion.p
             className="mt-4 text-lg text-slate-400"
             variants={itemVariants}
           >
-            Currently, I'm focused on leveraging <span className="text-violet-400 font-medium">serverless architectures</span> and <span className="text-violet-400 font-medium">modern frontend frameworks</span> to deliver exceptional user experiences. When I'm not at my keyboard, you can find me exploring hiking trails or searching for the perfect cup of coffee.
+            Currently, I&apos;m focused on leveraging{" "}
+            <span className="text-violet-400 font-medium">
+              serverless architectures
+            </span>{" "}
+            and{" "}
+            <span className="text-violet-400 font-medium">
+              modern frontend frameworks
+            </span>{" "}
+            to deliver exceptional user experiences. When I&apos;m not at my
+            keyboard, you can find me exploring hiking trails or searching for
+            the perfect cup of coffee.
           </motion.p>
           <motion.div className="mt-8" variants={itemVariants}>
             <Button

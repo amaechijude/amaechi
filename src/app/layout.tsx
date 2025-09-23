@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,10 +29,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
-        {/* Navbar */}
-        {/* eslint-disable-next-line @typescript-eslint/no-var-requires */}
-        {require("react").createElement(require("@/components/shared/Navbar").default)}
-        <main>{children}</main>
+      <main className="relative flex flex-col items-center justify-center bg-slate-900">
+        <Navbar />
+        {children}
+      <Footer />
+    </main>
       </body>
     </html>
   );

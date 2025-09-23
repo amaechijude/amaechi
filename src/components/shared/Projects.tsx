@@ -1,17 +1,28 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 
-const projectsData = [
+
+interface ProjectDataProps {
+  title: string;
+  description: string;
+  techStack: string[];
+  imageUrl: string;
+  liveLink: string;
+  codeLink: string;
+}
+
+const projectsData: ProjectDataProps[] = [
   {
     title: "QuantumLeap AI",
     description: "A high-performance computing platform for AI model training, reducing processing times by 40% through distributed GPU scheduling and a custom data pipeline architecture.",
-    techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "Kubernetes", "tRPC"],
+    techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "Kubernetes", "gRPC"],
     imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     liveLink: "#",
     codeLink: "#",
@@ -42,7 +53,7 @@ const projectsData = [
   },
 ];
 
-const ProjectCard = ({ project, variants }) => (
+const ProjectCard = ({ project, variants }: { project: ProjectDataProps, variants: Variants }) => (
   <motion.div
     variants={variants}
     className="group relative flex flex-col overflow-hidden rounded-lg bg-slate-800 border border-slate-700 shadow-lg transition-all duration-300 ease-in-out hover:shadow-violet-500/20 hover:-translate-y-2"
@@ -89,7 +100,7 @@ const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.25 });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -99,7 +110,7 @@ const Projects = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,

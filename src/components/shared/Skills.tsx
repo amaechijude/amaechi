@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useRef } from "react";
-import { CheckCircle, Code, Cloud, Database, GitMerge, TestTube, Zap, Users, BrainCircuit } from "lucide-react";
+import { CheckCircle, Code, Cloud, Database, GitMerge, TestTube, Users, BrainCircuit } from "lucide-react";
 
 // Data for the component
 const philosophyData = [
@@ -13,22 +14,22 @@ const philosophyData = [
 
 const technologiesData = {
   frontend: [
-    { name: "React & Next.js", context: "5+ years production experience", icon: <Code /> },
+    { name: "React & Next.js", context: "<1+ years production experience", icon: <Code /> },
     { name: "TypeScript", context: "Go-to for type-safe applications", icon: <Code /> },
     { name: "Tailwind CSS", context: "Building modern, responsive UIs", icon: <Code /> },
     { name: "Framer Motion", context: "Creating fluid, interactive animations", icon: <Code /> },
   ],
   backend: [
-    { name: "Node.js & Express", context: "Architected microservices for 100k+ users", icon: <Code /> },
-    { name: "Python & FastAPI", context: "For high-performance data APIs", icon: <Code /> },
-    { name: "GraphQL", context: "Efficient and flexible API design", icon: <Code /> },
-    { name: "tRPC", context: "End-to-end typesafe APIs", icon: <Code /> },
+    { name: "C# & Dotnet", context: "Architected microservices for 100k+ users", icon: <Code /> },
+    { name: "Python & Django/FastAPI", context: "For high-performance data APIs", icon: <Code /> },
+    { name: "WebSocket", context: "Efficient and flexible real-time API design", icon: <Code /> },
+    { name: "gRPC", context: "End-to-end typesafe APIs", icon: <Code /> },
   ],
   'devops-cloud': [
     { name: "Docker", context: "Containerizing applications for consistency", icon: <Cloud /> },
-    { name: "Kubernetes", context: "Orchestrating services at scale", icon: <Cloud /> },
+    { name: "Docker Compose", context: "Orchestrating services at scale", icon: <Cloud /> },
     { name: "Vercel", context: "Seamless frontend deployment", icon: <Cloud /> },
-    { name: "AWS", context: "Leveraging cloud-native services", icon: <Cloud /> },
+    { name: "Azure", context: "Leveraging cloud-native services", icon: <Cloud /> },
   ],
   data: [
     { name: "PostgreSQL", context: "Reliable relational data modeling", icon: <Database /> },
@@ -45,12 +46,12 @@ const practicesData = [
 ];
 
 // Animation Variants
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
 };

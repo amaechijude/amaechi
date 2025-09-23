@@ -11,13 +11,25 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Amaechi. All rights reserved.
         </p>
         <div className="mt-4 flex space-x-6 md:mt-0">
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://github.com/amaechijude"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Github className="h-6 w-6 text-slate-400 hover:text-violet-400 transition-colors" />
           </Link>
-          <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://www.linkedin.com/in/amaechi-ugwu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Linkedin className="h-6 w-6 text-slate-400 hover:text-violet-400 transition-colors" />
           </Link>
-          <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://x.com/amaechi_1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Twitter className="h-6 w-6 text-slate-400 hover:text-violet-400 transition-colors" />
           </Link>
         </div>
