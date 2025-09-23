@@ -4,6 +4,7 @@ import Hero from "@/components/shared/Hero";
 import Navbar from "@/components/shared/Navbar";
 import Projects from "@/components/shared/Projects";
 import Skills from "@/components/shared/Skills";
+import Testimonials from "@/components/shared/Testimonials";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Projects />
       <Skills />
       <Experience />
+      <Testimonials />
     </main>
   );
 }
