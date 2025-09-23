@@ -23,11 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
-        {children}
+        {/* Navbar */}
+        {/* eslint-disable-next-line @typescript-eslint/no-var-requires */}
+        {require("react").createElement(require("@/components/shared/Navbar").default)}
+        <main>{children}</main>
       </body>
     </html>
   );

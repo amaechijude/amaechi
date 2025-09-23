@@ -1,0 +1,434 @@
+# Portfolio Development Rules for Cursor AI
+
+## 🎯 Project Overview
+This is a professional full-stack developer portfolio built with Next.js 15+, TypeScript, Tailwind CSS, MongoDB, and Vercel. The project showcases modern web development skills with an admin dashboard for content management.
+
+## 🛠️ Tech Stack & Dependencies
+- **Framework**: Next.js 15+ with App Router
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS 4 with shadcn/ui components
+- **Database**: MongoDB Atlas
+- **Deployment**: Vercel
+- **UI Components**: Radix UI primitives via shadcn/ui
+- **Icons**: Lucide React
+- **Themes**: next-themes for dark/light mode
+- **Notifications**: Sonner
+
+## 📁 Project Structure
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── (admin)/           # Admin routes group
+│   ├── api/               # API routes
+│   ├── projects/          # Project pages
+│   ├── blog/              # Blog pages
+│   ├── contact/           # Contact page
+│   ├── globals.css        # Global styles
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   ├── ui/               # Base UI components (shadcn)
+│   ├── forms/            # Form components
+│   ├── admin/            # Admin-specific components
+│   ├── sections/         # Page sections
+│   └── shared/           # Shared components
+├── lib/                  # Utility functions
+│   ├── auth.ts           # Authentication utilities
+│   ├── db.ts             # Database connection
+│   ├── validations.ts    # Input validation schemas
+│   └── utils.ts          # Helper functions
+├── hooks/                # Custom React hooks
+├── types/                # TypeScript type definitions
+└── utils/                # Additional utilities
+```
+
+## 🎨 Design System & Styling
+
+### Color Palette
+- Use CSS custom properties for consistent theming
+- Support both light and dark modes
+- Primary: Professional blue/indigo tones
+- Secondary: Complementary accent colors
+- Neutral: Gray scale for text and backgrounds
+
+### Typography
+- Headings: Geist Sans (--font-geist-sans)
+- Body: Geist Sans
+- Code: Geist Mono (--font-geist-mono)
+
+### Component Patterns
+- Use shadcn/ui as the base component library
+- Build custom components on top of shadcn primitives
+- Follow consistent spacing using Tailwind's spacing scale
+- Implement responsive design with mobile-first approach
+
+## 💻 Code Standards
+
+### TypeScript
+- Use strict TypeScript configuration
+- Define proper interfaces for all props and data structures
+- Use type guards and proper error handling
+- Avoid `any` type - use proper typing or `unknown`
+
+### React Components
+```typescript
+// Component structure template
+interface ComponentProps {
+  // Define all props with proper types
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const Component: React.FC<ComponentProps> = ({ 
+  className, 
+  children,
+  ...props 
+}) => {
+  // Component logic here
+  
+  return (
+    <div className={cn("base-styles", className)} {...props}>
+      {children}
+    </div>
+  );
+};
+
+export default Component;
+```
+
+### API Routes
+```typescript
+// API route structure
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET(request: NextRequest) {
+  try {
+    // Implementation
+    return NextResponse.json({
+      success: true,
+      data: result,
+      message: 'Success message'
+    });
+  } catch (error) {
+    return NextResponse.json({
+      success: false,
+      data: null,
+      message: 'Error message',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
+  }
+}
+```
+
+### Database Schemas
+```typescript
+// MongoDB document interfaces
+interface Project {
+  _id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  imageUrl: string;
+  featured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface BlogPost {
+  _id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  published: boolean;
+  tags: string[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+## 🔒 Security Requirements
+
+### Authentication
+- Use JWT tokens for authentication
+- Implement secure password hashing with bcrypt
+- Add rate limiting to auth endpoints
+- Use secure session management
+
+### Data Protection
+- Validate all inputs with Zod schemas
+- Sanitize user inputs to prevent XSS
+- Implement CSRF protection
+- Use environment variables for sensitive data
+- Add proper CORS configuration
+
+### API Security
+```typescript
+// Input validation example
+import { z } from 'zod';
+
+const projectSchema = z.object({
+  title: z.string().min(1).max(100),
+  description: z.string().min(1).max(1000),
+  technologies: z.array(z.string()).min(1),
+  githubUrl: z.string().url().optional(),
+  liveUrl: z.string().url().optional(),
+});
+```
+
+## 📊 Performance Standards
+
+### Core Web Vitals Targets
+- First Contentful Paint: < 1.5s
+- Largest Contentful Paint: < 2.5s
+- Cumulative Layout Shift: < 0.1
+- First Input Delay: < 100ms
+- Lighthouse Score: 90+ in all categories
+
+### Optimization Practices
+- Use Next.js Image component for all images
+- Implement code splitting and lazy loading
+- Optimize bundle size
+- Use proper caching strategies
+- Minimize re-renders with React.memo and useMemo
+
+## 🧪 Testing Requirements
+
+### Test Coverage
+- Unit tests: 80%+ coverage
+- Integration tests for API endpoints
+- E2E tests for critical user flows
+- Component testing with React Testing Library
+
+### Testing Patterns
+```typescript
+// Component test example
+import { render, screen } from '@testing-library/react';
+import { ProjectCard } from './ProjectCard';
+
+describe('ProjectCard', () => {
+  it('renders project information correctly', () => {
+    const mockProject = {
+      title: 'Test Project',
+      description: 'Test Description',
+      technologies: ['React', 'TypeScript'],
+    };
+    
+    render(<ProjectCard project={mockProject} />);
+    
+    expect(screen.getByText('Test Project')).toBeInTheDocument();
+    expect(screen.getByText('Test Description')).toBeInTheDocument();
+  });
+});
+```
+
+## 🎯 Development Priorities
+
+### Current Phase (Week 3-4)
+1. **Database Setup**
+   - MongoDB Atlas configuration
+   - Database schema design
+   - Connection utilities
+
+2. **Authentication System**
+   - JWT implementation
+   - Password hashing
+   - Protected routes
+
+3. **API Foundation**
+   - Basic API routes structure
+   - Error handling middleware
+   - Input validation setup
+
+### Next Phase (Week 5-6)
+1. **Admin Dashboard**
+   - Project management interface
+   - Blog editor with rich text
+   - Content management system
+
+2. **Content Management**
+   - Project CRUD operations
+   - Blog post management
+   - Contact form functionality
+
+## 🚀 Deployment & Environment
+
+### Environment Variables
+```bash
+# Database
+MONGODB_URI=mongodb+srv://...
+DATABASE_NAME=portfolio
+
+# Authentication
+JWT_SECRET=your-secret-key
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+
+# External Services
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+### Build Configuration
+- Use Next.js 15+ with Turbopack for development
+- Optimize for production builds
+- Configure proper caching headers
+- Set up proper error boundaries
+
+## 📝 Documentation Standards
+
+### Code Documentation
+- Use JSDoc for complex functions
+- Document all API endpoints
+- Include usage examples
+- Maintain README files for major features
+
+### Component Documentation
+```typescript
+/**
+ * ProjectCard component displays project information in a card format
+ * @param project - Project data object
+ * @param featured - Whether to show as featured project
+ * @param className - Additional CSS classes
+ */
+interface ProjectCardProps {
+  project: Project;
+  featured?: boolean;
+  className?: string;
+}
+```
+
+## 🔄 Git & Version Control
+
+### Commit Messages
+- Use conventional commit format
+- Be descriptive and clear
+- Reference issue numbers when applicable
+
+### Branch Strategy
+- `main`: Production-ready code
+- `develop`: Integration branch
+- `feature/*`: Feature development
+- `fix/*`: Bug fixes
+- `hotfix/*`: Critical production fixes
+
+## 🎨 UI/UX Guidelines
+
+### Accessibility
+- Follow WCAG 2.1 guidelines
+- Use semantic HTML elements
+- Provide proper ARIA labels
+- Ensure keyboard navigation
+- Maintain proper color contrast
+
+### Responsive Design
+- Mobile-first approach
+- Test on multiple screen sizes
+- Use Tailwind's responsive utilities
+- Optimize touch targets for mobile
+
+### User Experience
+- Implement loading states
+- Provide error handling
+- Use smooth transitions
+- Maintain consistent navigation
+- Optimize for fast interactions
+
+## 🛡️ Error Handling
+
+### Client-Side Errors
+```typescript
+// Error boundary component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <ErrorFallback />;
+    }
+    return this.props.children;
+  }
+}
+```
+
+### Server-Side Errors
+```typescript
+// API error handling
+export async function GET() {
+  try {
+    // Implementation
+  } catch (error) {
+    console.error('API Error:', error);
+    return NextResponse.json(
+      { success: false, message: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+```
+
+## 📈 Analytics & Monitoring
+
+### Performance Monitoring
+- Implement Web Vitals tracking
+- Monitor Core Web Vitals
+- Track user interactions
+- Monitor error rates
+
+### Analytics Integration
+- Google Analytics 4 setup
+- Custom event tracking
+- User behavior analysis
+- Performance metrics
+
+## 🎯 Success Criteria
+
+### Technical Metrics
+- Lighthouse score: 90+ in all categories
+- Core Web Vitals: All green
+- Zero critical security vulnerabilities
+- 99.9% uptime
+- < 2s page load time
+
+### Professional Metrics
+- SEO ranking improvements
+- Contact form submissions
+- Resume downloads
+- Project demo interactions
+- Blog post engagement
+
+---
+
+## 🤖 AI Assistant Guidelines
+
+When helping with this project:
+
+1. **Always reference the project structure** and maintain consistency
+2. **Follow the established patterns** for components, APIs, and styling
+3. **Prioritize security** in all implementations
+4. **Optimize for performance** from the start
+5. **Ensure accessibility** compliance
+6. **Use proper TypeScript typing** throughout
+7. **Test thoroughly** before suggesting implementations
+8. **Document complex logic** and provide examples
+9. **Consider scalability** in architectural decisions
+10. **Maintain professional code quality** standards
+
+Remember: This is a professional portfolio that showcases full-stack development skills. Every implementation should reflect best practices and modern web development standards.
