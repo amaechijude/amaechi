@@ -1,5 +1,7 @@
 import About from "@/components/shared/About";
+import Contact from "@/components/shared/Contact";
 import Experience from "@/components/shared/Experience";
+import Footer from "@/components/shared/Footer";
 import Hero from "@/components/shared/Hero";
 import Navbar from "@/components/shared/Navbar";
 import Projects from "@/components/shared/Projects";
@@ -16,6 +18,8 @@ export default function Home() {
       <Skills />
       <Experience />
       <Testimonials />
+      <Contact />
+      <Footer />
     </main>
   );
 }
