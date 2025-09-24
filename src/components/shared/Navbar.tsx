@@ -1,45 +1,25 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("#");
-
-  // Handle scroll to add shadow and update active section
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-
-      const sections = NAV_ITEMS.map(item => item.href.substring(1)).filter(Boolean);
-      let currentSection = "#";
-
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId);
-        if (section && window.scrollY >= section.offsetTop - 100) {
-          currentSection = `#${sectionId}`;
-        }
-      }
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const pathname = usePathname();
 
   // Animation variants
   const navbarVariants = {
@@ -73,10 +53,7 @@ export default function Navbar() {
     <>
       <motion.header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "bg-slate-900/80 shadow-lg backdrop-blur-sm"
-            : "bg-transparent"
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900/80 shadow-lg backdrop-blur-sm"
         )}
         initial="hidden"
         animate="visible"
@@ -84,7 +61,7 @@ export default function Navbar() {
       >
         <nav className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <motion.div variants={navItemVariants}>
-            <Link href="#" className="text-xl font-bold text-slate-200">
+            <Link href="/" className="text-xl font-bold text-slate-200">
               Amaechi
             </Link>
           </motion.div>
@@ -100,11 +77,11 @@ export default function Navbar() {
                   href={item.href}
                   className={cn(
                     "relative rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:text-violet-400",
-                    activeSection === item.href && "text-violet-400"
+                    pathname === item.href && "text-violet-400"
                   )}
                 >
                   {item.label}
-                  {activeSection === item.href && (
+                  {pathname === item.href && (
                     <motion.span
                       layoutId="active-underline"
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500"
@@ -175,7 +152,7 @@ export default function Navbar() {
                       onClick={() => setIsOpen(false)}
                       className={cn(
                         "block rounded-md px-4 py-2 text-lg font-medium",
-                        activeSection === item.href
+                        pathname === item.href
                           ? "bg-violet-500/10 text-violet-300"
                           : "text-slate-300 hover:bg-slate-800"
                       )}
