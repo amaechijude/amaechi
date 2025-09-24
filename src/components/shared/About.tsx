@@ -53,9 +53,9 @@ const About = () => {
             <Image
               src="/profile.jpg"
               alt="Professional headshot of Amaechi"
-              layout="fill"
-              objectFit="cover"
-              className="transition-transform duration-500 ease-in-out hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="transition-transform duration-500 ease-in-out hover:scale-105 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
           </div>

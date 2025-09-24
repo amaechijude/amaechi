@@ -114,15 +114,66 @@ const Hero = () => {
 
         {/* Visual Element (40%) - Hidden on mobile */}
         <motion.div
-          className="hidden w-2/5 md:flex items-center justify-center"
+          className="flex w-full items-center justify-center px-4 sm:w-3/5 md:w-2/5"
           variants={itemVariants}
         >
-          {/* Placeholder for a more complex visual like a 3D model or code animation */}
-          <div className="w-80 h-80 rounded-full bg-gradient-to-tr from-violet-500/20 to-slate-800/20 flex items-center justify-center border border-slate-700">
-            <div className="w-64 h-64 rounded-full bg-gradient-to-bl from-slate-800/20 to-violet-500/20 flex items-center justify-center border border-slate-600">
-              <div className="w-48 h-48 rounded-full bg-gradient-to-br from-violet-500/20 to-slate-800/20 border border-slate-500"></div>
-            </div>
-          </div>
+          {/* Pulsating concentric circles with mobile responsiveness */}
+          <motion.div
+            // className="hidden w-2/5 md:flex items-center justify-center"
+            variants={itemVariants}
+            className="hidden w-2/5 md:flex relative h-60 items-center justify-center rounded-full border border-slate-700 bg-gradient-to-tr from-violet-500/20 to-slate-800/20 sm:h-72 sm:w-72 md:h-80 md:w-80"
+            animate={{
+              scale: [1, 1.05, 1],
+              opacity: [0.8, 1, 0.8],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <motion.div
+              className="flex h-48 w-48 items-center justify-center rounded-full border border-slate-600 bg-gradient-to-bl from-slate-800/20 to-violet-500/20 sm:h-56 sm:w-56 md:h-64 md:w-64"
+              animate={{
+                scale: [1, 1.08, 1],
+                opacity: [0.9, 0.7, 0.9],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3,
+              }}
+            >
+              <motion.div
+                className="h-36 w-36 rounded-full border border-slate-500 bg-gradient-to-br from-violet-500/20 to-slate-800/20 sm:h-40 sm:w-40 md:h-48 md:w-48"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [1, 0.6, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.6,
+                }}
+              />
+            </motion.div>
+
+            {/* Additional pulsating glow effect */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-gradient-to-tr from-violet-500/10 to-slate-800/10"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0, 0.3, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+            />
+          </motion.div>
         </motion.div>
       </div>
 

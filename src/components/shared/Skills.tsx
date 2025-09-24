@@ -14,7 +14,7 @@ const philosophyData = [
 
 const technologiesData = {
   frontend: [
-    { name: "React & Next.js", context: "<1+ years production experience", icon: <Code /> },
+    { name: "React & Next.js", context: "Crafting seamless user experience", icon: <Code /> },
     { name: "TypeScript", context: "Go-to for type-safe applications", icon: <Code /> },
     { name: "Tailwind CSS", context: "Building modern, responsive UIs", icon: <Code /> },
     { name: "Framer Motion", context: "Creating fluid, interactive animations", icon: <Code /> },

@@ -23,7 +23,7 @@ const projectsData: ProjectDataProps[] = [
     title: "QuantumLeap AI",
     description: "A high-performance computing platform for AI model training, reducing processing times by 40% through distributed GPU scheduling and a custom data pipeline architecture.",
     techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "Kubernetes", "gRPC"],
-    imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/projects/one.avif",
     liveLink: "#",
     codeLink: "#",
   },
@@ -31,7 +31,7 @@ const projectsData: ProjectDataProps[] = [
     title: "FinTrack Analytics",
     description: "A B2B financial analytics dashboard that provides real-time insights into market trends, increasing user data-driven decision-making by 60%. My role focused on the backend and data visualization components.",
     techStack: ["React", "Node.js", "Express", "PostgreSQL", "D3.js"],
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/projects/two.avif",
     liveLink: "#",
     codeLink: "#",
   },
@@ -39,7 +39,7 @@ const projectsData: ProjectDataProps[] = [
     title: "ConnectSphere",
     description: "A full-stack social networking application built from scratch, featuring real-time chat, a dynamic news feed, and user authentication. This project showcases a wide range of skills from UI design to database management.",
     techStack: ["Vue.js", "Firebase", "Tailwind CSS", "Node.js"],
-    imageUrl: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/projects/three.avif",
     liveLink: "#",
     codeLink: "#",
   },
@@ -47,13 +47,19 @@ const projectsData: ProjectDataProps[] = [
     title: "DevPortfolio",
     description: "An open-source, highly customizable portfolio template for developers, built with Next.js and Framer Motion. Designed for easy setup and deployment on Vercel.",
     techStack: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-    imageUrl: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/projects/four.avif",
     liveLink: "#",
     codeLink: "#",
   },
 ];
 
-const ProjectCard = ({ project, variants }: { project: ProjectDataProps, variants: Variants }) => (
+const ProjectCard = ({
+  project,
+  variants,
+}: {
+  project: ProjectDataProps;
+  variants: Variants;
+}) => (
   <motion.div
     variants={variants}
     className="group relative flex flex-col overflow-hidden rounded-lg bg-slate-800 border border-slate-700 shadow-lg transition-all duration-300 ease-in-out hover:shadow-violet-500/20 hover:-translate-y-2"
@@ -62,9 +68,10 @@ const ProjectCard = ({ project, variants }: { project: ProjectDataProps, variant
       <Image
         src={project.imageUrl}
         alt={`${project.title} mockup`}
-        layout="fill"
-        objectFit="cover"
-        className="transition-transform duration-500 ease-in-out group-hover:scale-105"
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority
+        className="transition-transform duration-500 ease-in-out group-hover:scale-105 object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent"></div>
     </div>
@@ -82,12 +89,20 @@ const ProjectCard = ({ project, variants }: { project: ProjectDataProps, variant
       </div>
       <p className="mt-4 flex-1 text-slate-400">{project.description}</p>
       <div className="mt-6 flex items-center justify-between">
-        <Button asChild size="sm" className="bg-violet-600 text-white hover:bg-violet-700">
+        <Button
+          asChild
+          size="sm"
+          className="bg-violet-600 text-white hover:bg-violet-700"
+        >
           <Link href={project.liveLink} target="_blank">
             View Project <ExternalLink className="ml-2 h-4 w-4" />
           </Link>
         </Button>
-        <Link href={project.codeLink} target="_blank" className="flex items-center text-slate-400 hover:text-violet-400 transition-colors">
+        <Link
+          href={project.codeLink}
+          target="_blank"
+          className="flex items-center text-slate-400 hover:text-violet-400 transition-colors"
+        >
           <Github className="mr-2 h-5 w-5" />
           Code
         </Link>

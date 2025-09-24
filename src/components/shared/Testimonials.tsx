@@ -76,8 +76,8 @@ const TestimonialCard = ({ testimonial }: { testimonial: TestimonialProps }) => 
         <Image
           src={testimonial.image}
           alt={testimonial.name}
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
         />
       </div>
       <div>
