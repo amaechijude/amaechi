@@ -16,6 +16,7 @@ const Contact = () => {
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const itemVariants: any = (fromLeft = true) => ({
     hidden: { opacity: 0, x: fromLeft ? -50 : 50 },
     visible: {
