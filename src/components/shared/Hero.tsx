@@ -5,6 +5,22 @@ import type { Variants } from "framer-motion";
 import { Github, Linkedin, Twitter, MoveDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+
+const skills = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "C#",
+  "Dotnet",
+  "Python",
+  "Tailwind CSS",
+  "Framer Motion",
+  "Docker",
+  "PostgreSQL",
+  "Azure",
+  "gRPC",
+];
 
 const Hero = () => {
   const containerVariants: Variants = {
@@ -29,6 +45,19 @@ const Hero = () => {
       },
     },
   };
+
+  const [angle, setAngle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAngle((prevAngle) => prevAngle + 0.002);
+    }, 50); // Adjust speed of rotation
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const radius = 150; // Radius of the sphere
+  const numSkills = skills.length;
 
   return (
     <motion.section
@@ -117,63 +146,39 @@ const Hero = () => {
           className="flex w-full items-center justify-center px-4 sm:w-3/5 md:w-2/5"
           variants={itemVariants}
         >
-          {/* Pulsating concentric circles with mobile responsiveness */}
-          <motion.div
-            // className="hidden w-2/5 md:flex items-center justify-center"
-            variants={itemVariants}
-            className="hidden w-2/5 md:flex relative h-60 items-center justify-center rounded-full border border-slate-700 bg-gradient-to-tr from-violet-500/20 to-slate-800/20 sm:h-72 sm:w-72 md:h-80 md:w-80"
-            animate={{
-              scale: [1, 1.05, 1],
-              opacity: [0.8, 1, 0.8],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <motion.div
-              className="flex h-48 w-48 items-center justify-center rounded-full border border-slate-600 bg-gradient-to-bl from-slate-800/20 to-violet-500/20 sm:h-56 sm:w-56 md:h-64 md:w-64"
-              animate={{
-                scale: [1, 1.08, 1],
-                opacity: [0.9, 0.7, 0.9],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.3,
-              }}
-            >
-              <motion.div
-                className="h-36 w-36 rounded-full border border-slate-500 bg-gradient-to-br from-violet-500/20 to-slate-800/20 sm:h-40 sm:w-40 md:h-48 md:w-48"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [1, 0.6, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.6,
-                }}
-              />
-            </motion.div>
+          <div className="relative hidden h-80 w-80 md:flex items-center justify-center">
+            {skills.map((skill, i) => {
+              const phi = Math.acos(-1 + (2 * i) / numSkills);
+              const theta = Math.sqrt(numSkills * Math.PI) * phi;
 
-            {/* Additional pulsating glow effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full bg-gradient-to-tr from-violet-500/10 to-slate-800/10"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0, 0.3, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeOut",
-              }}
-            />
-          </motion.div>
+              const x = radius * Math.cos(theta) * Math.sin(phi);
+              const y = radius * Math.sin(theta) * Math.sin(phi);
+              const z = radius * Math.cos(phi);
+
+              // Rotate around Y-axis
+              const rotatedX = x * Math.cos(angle) - z * Math.sin(angle);
+              const rotatedZ = x * Math.sin(angle) + z * Math.cos(angle);
+
+              const scale = (rotatedZ + radius) / (2 * radius);
+              const opacity = parseFloat((scale * 0.7 + 0.3).toFixed(2));
+
+              return (
+                <motion.div
+                  key={skill}
+                  className="absolute flex items-center gap-2 rounded-full bg-slate-800/50 px-3 py-1.5 text-sm font-medium text-violet-300 shadow-md"
+                  style={{
+                    x: rotatedX,
+                    y: y,
+                    scale,
+                    opacity,
+                    zIndex: Math.round(scale * 100),
+                  }}
+                >
+                  {skill}
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
       </div>
 

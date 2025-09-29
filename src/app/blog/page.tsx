@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import Link from "next/link";
 
 const BlogPage = () => {
   const [visiblePosts, setVisiblePosts] = useState(6);
@@ -32,47 +33,49 @@ const BlogPage = () => {
           {featuredPost && (
             <section className="mb-16 animate-fade-in">
               <h2 className="text-3xl font-bold mb-6">Featured Post</h2>
-              <div className="bg-[#1e293b] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
-                <div className="relative h-64 md:h-96">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/50" />
-                  <div className="absolute bottom-0 left-0 p-6 md:p-8">
-                    <span className="text-xs font-bold uppercase text-purple-400 bg-purple-900/50 px-2 py-1 rounded">
-                      Featured
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold mt-2 text-white">
-                      {featuredPost.title}
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-6 md:p-8">
-                  <p className="text-slate-400 mt-2 text-base">
-                    {featuredPost.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between mt-6 text-sm text-slate-500">
-                    <div className="flex items-center">
-                      <Image
-                        src="/profile.jpg"
-                        alt="author"
-                        width={24}
-                        height={24}
-                        className="rounded-full mr-2"
-                      />
-                      <span>{featuredPost.author}</span>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <span>{featuredPost.date}</span>
-                      <span>{featuredPost.readTime} min read</span>
+              <Link href={`/blog/${featuredPost.id}`}>
+                <div className="bg-[#1e293b] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                  <div className="relative h-64 md:h-96">
+                    <Image
+                      src={featuredPost.image}
+                      alt={featuredPost.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute bottom-0 left-0 p-6 md:p-8">
+                      <span className="text-xs font-bold uppercase text-purple-400 bg-purple-900/50 px-2 py-1 rounded">
+                        Featured
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-bold mt-2 text-white">
+                        {featuredPost.title}
+                      </h3>
                     </div>
                   </div>
+                  <div className="p-6 md:p-8">
+                    <p className="text-slate-400 mt-2 text-base">
+                      {featuredPost.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between mt-6 text-sm text-slate-500">
+                      <div className="flex items-center">
+                        <Image
+                          src="/profile.jpg"
+                          alt="author"
+                          width={24}
+                          height={24}
+                          className="rounded-full mr-2"
+                        />
+                        <span>{featuredPost.author}</span>
+                      </div>
+                      <div className="flex items-center space-x-4">
+                        <span>{featuredPost.date}</span>
+                        <span>{featuredPost.readTime} min read</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </section>
           )}
 
@@ -80,7 +83,8 @@ const BlogPage = () => {
             <h2 className="text-3xl font-bold mb-6">Recent Posts</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {recentPosts.slice(0, visiblePosts).map((post, index) => (
-                <div
+                <Link
+                  href={`/blog/${post.id}`}
                   key={post.id}
                   className="bg-[#1e293b] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -114,7 +118,7 @@ const BlogPage = () => {
                       <span>{post.readTime} min read</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
             {visiblePosts < recentPosts.length && (
