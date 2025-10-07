@@ -3,38 +3,124 @@
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useRef } from "react";
-import { CheckCircle, Code, Cloud, Database, GitMerge, TestTube, Users, BrainCircuit } from "lucide-react";
+import { CheckCircle, Code, Cloud, Database, GitMerge, TestTube, Users, BrainCircuit, FileText, HardDrive, Server, Boxes, Globe, Settings, Radio, Network, Terminal, Layers, MousePointer, Palette } from "lucide-react";
+
 
 // Data for the component
-const philosophyData = [
+const philosophyData: { text: string; id: number }[]= [
   { text: "I build for scale from day one, but optimize for clarity over cleverness.", id: 1 },
   { text: "Every technical decision is a business decision in disguise; understanding the 'why' is paramount.", id: 2 },
   { text: "Code quality isn't a feature, it's the foundation of sustainable velocity.", id: 3 },
 ];
 
 const technologiesData = {
-  frontend: [
-    { name: "React & Next.js", context: "Crafting seamless user experience", icon: <Code /> },
-    { name: "TypeScript", context: "Go-to for type-safe applications", icon: <Code /> },
-    { name: "Tailwind CSS", context: "Building modern, responsive UIs", icon: <Code /> },
-    { name: "Framer Motion", context: "Creating fluid, interactive animations", icon: <Code /> },
-  ],
   backend: [
-    { name: "C# & Dotnet", context: "Architected microservices for 100k+ users", icon: <Code /> },
-    { name: "Python & Django/FastAPI", context: "For high-performance data APIs", icon: <Code /> },
-    { name: "WebSocket", context: "Efficient and flexible real-time API design", icon: <Code /> },
-    { name: "gRPC", context: "End-to-end typesafe APIs", icon: <Code /> },
+    {
+      name: "C# & .NET",
+      context: "Built scalable microservices and APIs",
+      icon: <Terminal />,
+    },
+    {
+      name: "Python & Django/DRF",
+      context: "Developed robust REST APIs and business logic",
+      icon: <Code />,
+    },
+    {
+      name: "WebSocket",
+      context: "Real-time communication and event-driven APIs",
+      icon: <Radio />,
+    },
+    {
+      name: "gRPC",
+      context: "Typesafe, high-performance RPC APIs",
+      icon: <Network />,
+    },
   ],
-  'devops-cloud': [
-    { name: "Docker", context: "Containerizing applications for consistency", icon: <Cloud /> },
-    { name: "Docker Compose", context: "Orchestrating services at scale", icon: <Cloud /> },
-    { name: "Vercel", context: "Seamless frontend deployment", icon: <Cloud /> },
-    { name: "Azure", context: "Leveraging cloud-native services", icon: <Cloud /> },
+  devops_cloud: [
+    {
+      name: "GitHub Actions",
+      context: "Automated CI/CD pipelines",
+      icon: <Settings />,
+    },
+    {
+      name: "Docker",
+      context: "Containerizing applications for consistency",
+      icon: <Boxes />,
+    },
+    {
+      name: "Docker Compose",
+      context: "Managing multi-container applications",
+      icon: <Boxes />,
+    },
+    {
+      name: "Kubernetes",
+      context: "Orchestrating containerized applications at scale",
+      icon: <Globe />,
+    },
+    {
+      name: "Azure",
+      context: "Leveraging cloud-native infrastructure and services",
+      icon: <Cloud />,
+    },
+    {
+      name: "Nginx",
+      context: "High-performance reverse proxy and load balancing",
+      icon: <Server />,
+    },
+  ],
+  frontend: [
+    {
+      name: "React & Next.js",
+      context: "Building fast, scalable, and interactive UIs",
+      icon: <Layers />,
+    },
+    {
+      name: "TypeScript",
+      context: "Type-safe, maintainable, and scalable code",
+      icon: <Code />,
+    },
+    {
+      name: "Tailwind CSS",
+      context: "Designing responsive and modern interfaces",
+      icon: <Palette />,
+    },
+    {
+      name: "Framer Motion",
+      context: "Crafting smooth, engaging animations",
+      icon: <MousePointer />,
+    },
   ],
   data: [
-    { name: "PostgreSQL", context: "Reliable relational data modeling", icon: <Database /> },
-    { name: "MongoDB", context: "Flexible NoSQL document storage", icon: <Database /> },
-    { name: "Redis", context: "High-speed caching and session management", icon: <Database /> },
+    {
+      name: "PostgreSQL",
+      context: "Reliable relational data modeling",
+      icon: <Database />,
+    },
+    {
+      name: "efCore ORM",
+      context: "Type-safe data access and modeling in .NET",
+      icon: <FileText />,
+    },
+    {
+      name: "Redis",
+      context: "High-speed caching, queuing, and session management",
+      icon: <HardDrive />,
+    },
+    {
+      name: "Azure Blob Storage",
+      context: "Scalable storage for static files and media",
+      icon: <Cloud />,
+    },
+    {
+      name: "Docker Volumes",
+      context: "Persistent containerized data management",
+      icon: <Server />,
+    },
+    {
+      name: "Prisma ORM",
+      context: "Type-safe data access and modeling in Next.js",
+      icon: <FileText />,
+    },
   ],
 };
 

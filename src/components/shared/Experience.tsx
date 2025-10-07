@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, GraduationCap, Star, Users } from "lucide-react";
+import { Briefcase, Star } from "lucide-react";
 
 interface TimelineItem {
   type: "professional" | "mentoring";
@@ -13,51 +13,58 @@ interface TimelineItem {
   icon: React.ReactNode;
 }
 
-const timelineData: TimelineItem[]= [
+const timelineData: TimelineItem[] = [
   {
     type: "professional",
-    date: "2022 - Present",
-    title: "Senior Software Engineer",
-    subtitle: "Innovate Corp",
+    date: "2025 - Present",
+    title: "Tech Mentor",
+    subtitle: "Icehub",
     description: [
-      "Led architecture redesign of the main platform, reducing page load times by 60%.",
-      "Mentored 5 junior developers, fostering a culture of code quality and continuous learning.",
-      "Shipped 20+ features for a product serving over 100k daily active users.",
+      "Mentor developers in web development, providing guidance on Django, React, and cloud deployments.",
+      "Led workshops and hands-on sessions to enhance practical learning and skill application.",
+      "Assisted learners in building real-world projects, reinforcing best practices and clean coding standards.",
+      // "Introduced version control with Git/GitHub and guided collaborative workflows.",
+      // "Provided personalized support, code reviews, and feedback to accelerate growth.",
+      // "Encouraged problem-solving through coding challenges and group discussions.",
     ],
     icon: <Briefcase />,
   },
   {
     type: "mentoring",
-    date: "2021",
-    title: "Launched 'React Fundamentals' Course",
-    subtitle: "Online Workshop",
+    date: "2025 - Present",
+    title: "Full-Stack Engineer",
+    subtitle: "Freelance / Personal Projects",
     description: [
-      "Created a comprehensive curriculum used by over 200 students to date.",
-      "Achieved a 95% completion rate through engaging, project-based learning.",
+      "Building a multi-tenant SaaS project management platform with ASP.NET Core (Clean Architecture, CQRS) and Next.js.",
+      "Implemented role-based authorization, workspace management, and advanced logging with Serilog.",
+      "Integrated modern frontend stacks: Next.js, TypeScript, Tailwind, and ShadCN UI.",
     ],
-    icon: <GraduationCap />,
+    icon: <Briefcase />,
   },
   {
     type: "professional",
-    date: "2019 - 2022",
-    title: "Mid-Level Software Engineer",
-    subtitle: "Data Solutions Inc.",
+    date: "2024",
+    title: "Backend Engineer",
+    subtitle: "TailorConnect",
     description: [
-      "Developed key features for a data analytics SaaS platform, increasing user engagement by 30%.",
-      "Contributed to a 50% improvement in API response times by optimizing database queries.",
+      "Developed a Django-based platform connecting fashion designers with customers.",
+      "Deployed on Azure VM with Docker, Redis for caching and Celery for task processing.",
+      "Implemented Azure Blob Storage for media and static files.",
+      "",
     ],
     icon: <Briefcase />,
   },
   {
     type: "mentoring",
-    date: "2020",
-    title: "Community Tech Mentor",
-    subtitle: "Dev Community Hub",
+    date: "2022 - 2023",
+    title: "AI Training Linguist & Mentor",
+    subtitle: "Translation Automation User Society (TAUS)",
     description: [
-      "Guided 50+ aspiring developers through career transitions with an 85% job placement rate.",
-      "Hosted weekly Q&A sessions and code review workshops.",
+      "Translated 500k+ technical words (English to Igbo) with 100% accuracy to create training datasets for AI language models",
+      "Mentored junior linguists, enhancing their skills in technical translation and quality assurance.",
+      "Collaborated with cross-functional teams to refine translation processes and improve overall quality.",
     ],
-    icon: <Users />,
+    icon: <Briefcase />,
   },
 ];
 
@@ -72,7 +79,11 @@ const Experience = () => {
 
   const itemVariants = (fromLeft = true) => ({
     hidden: { opacity: 0, x: fromLeft ? -50 : 50 },
-    visible: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 100 } },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring" as const, stiffness: 100 },
+    },
   });
 
   return (
@@ -92,8 +103,12 @@ const Experience = () => {
             visible: { opacity: 1, transition: { duration: 0.5 } },
           }}
         >
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">Experience & Impact</h2>
-          <p className="mt-4 text-lg text-slate-400">Building software and empowering developers.</p>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
+            Experience & Impact
+          </h2>
+          <p className="mt-4 text-lg text-slate-400">
+            Building software and empowering developers.
+          </p>
         </motion.div>
 
         <div className="relative mt-16">
@@ -108,23 +123,35 @@ const Experience = () => {
               return (
                 <motion.div
                   key={index}
-                  className="relative w-full md:flex md:items-center" 
-                  style={{ justifyContent: isPro ? 'flex-start' : 'flex-end' }}
+                  className="relative w-full md:flex md:items-center"
+                  style={{ justifyContent: isPro ? "flex-start" : "flex-end" }}
                   variants={itemVariants(fromLeft)}
                 >
                   {/* Mobile Spine */}
                   <div className="absolute left-0 top-0 h-full w-1 bg-slate-700 md:hidden"></div>
-                  
+
                   {/* Timeline Card */}
-                  <div className={`relative w-full md:w-1/2 ${isPro ? 'md:pr-8' : 'md:pl-8'}`}>
+                  <div
+                    className={`relative w-full md:w-1/2 ${
+                      isPro ? "md:pr-8" : "md:pl-8"
+                    }`}
+                  >
                     <div className="relative rounded-lg border border-slate-700 bg-slate-800 p-6 shadow-lg transition-all duration-300 hover:border-violet-500/50 hover:shadow-violet-500/10">
-                      <div className={`absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rounded-full bg-violet-500 border-4 border-slate-900 ${isPro ? 'md:-right-2' : 'md:-left-2'} left-[-2px] md:left-auto`}></div>
+                      <div
+                        className={`absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rounded-full bg-violet-500 border-4 border-slate-900 ${
+                          isPro ? "md:-right-2" : "md:-left-2"
+                        } left-[-2px] md:left-auto`}
+                      ></div>
                       <div className="flex items-center space-x-3">
                         <div className="text-violet-400">{item.icon}</div>
                         <div>
                           <p className="text-xs text-slate-400">{item.date}</p>
-                          <h3 className="font-bold text-slate-200">{item.title}</h3>
-                          <p className="text-sm font-medium text-slate-300">{item.subtitle}</p>
+                          <h3 className="font-bold text-slate-200">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm font-medium text-slate-300">
+                            {item.subtitle}
+                          </p>
                         </div>
                       </div>
                       <ul className="mt-4 space-y-2 text-slate-400">
