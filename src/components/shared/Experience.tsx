@@ -4,7 +4,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, GraduationCap, Star, Users } from "lucide-react";
 
-const timelineData = [
+interface TimelineItem {
+  type: "professional" | "mentoring";
+  date: string;
+  title: string;
+  subtitle: string;
+  description: string[];
+  icon: React.ReactNode;
+}
+
+const timelineData: TimelineItem[]= [
   {
     type: "professional",
     date: "2022 - Present",
@@ -63,7 +72,7 @@ const Experience = () => {
 
   const itemVariants = (fromLeft = true) => ({
     hidden: { opacity: 0, x: fromLeft ? -50 : 50 },
-    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } },
+    visible: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 100 } },
   });
 
   return (
@@ -76,7 +85,13 @@ const Experience = () => {
       variants={containerVariants}
     >
       <div className="container mx-auto max-w-6xl px-4">
-        <motion.div className="text-center" variants={itemVariants()}>
+        <motion.div
+          className="text-center"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.5 } },
+          }}
+        >
           <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">Experience & Impact</h2>
           <p className="mt-4 text-lg text-slate-400">Building software and empowering developers.</p>
         </motion.div>

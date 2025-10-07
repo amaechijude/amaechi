@@ -15,20 +15,42 @@ const geistMono = Geist_Mono({
 });
 
 // TODO: Update metadataBase with your production domain.
-const siteUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: {
     default: "Amaechi - Software Engineer & Mentor",
     template: "%s | Amaechi",
   },
-  description: `The portfolio of Amaechi, a senior software engineer and mentor specializing in building 
+  description: `The portfolio of Amaechi, a software engineer and mentor specializing in building 
     scalable web applications and empowering developers through technical writing and mentorship.`,
   keywords: [
     "Software Engineer",
-    "Software Engineer",
+    "Software Developer",
+    "Software",
+    "Engineer",
+    "Developer",
+    "Amaechi Ugwu",
+    "Amaechi",
+    "Ugwu",
+    "Front-End Developer",
+    "Back-End Developer",
+    "Full-Stack Engineer",
+    "Full-Stack",
+    "Web Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Node.js Developer",
+    "Python Developer",
+    "Django Developer",
+    "C# Developer",
+    ".NET Developer",
+    "Technical Writer",
+    "Technical Mentor",
+    "Portfolio",
+    "Mentor",
     "Full-Stack Developer",
     "Web Developer",
     "React",
@@ -37,6 +59,12 @@ export const metadata: Metadata = {
     "Node.js",
     "C#",
     ".NET",
+    "Python",
+    "Django",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "SQL",
     "Technical Mentor",
     "Portfolio",
     "Amaechi",
@@ -67,12 +95,14 @@ export const metadata: Metadata = {
     description:
       "Building scalable web applications and empowering developers.",
     creator: "@amaechi_1",
-    images: [`${siteUrl}/og-image.png`],
+    site: "@amaechi_1",
+    images: [`${siteUrl}/profile.jpg`],
   },
+
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    shortcut: "/icon1.png",
+    apple: "/apple-icon.png",
   },
 };
 

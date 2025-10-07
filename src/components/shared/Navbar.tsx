@@ -29,7 +29,7 @@ export default function Navbar() {
       y: 0,
       transition: {
         duration: 0.3,
-        ease: "easeOut",
+        ease: [0.2, 0.8, 0.2, 1] as const, // 👈 Fix
         staggerChildren: 0.05,
       },
     },
@@ -40,14 +40,18 @@ export default function Navbar() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const mobileMenuVariants = {
-    hidden: { x: "100%", opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.4, ease: [0.2, 0.8, 0.2, 1] },
-    },
-  };
+ const mobileMenuVariants = {
+   hidden: { x: "100%", opacity: 0 },
+   visible: {
+     x: 0,
+     opacity: 1,
+     transition: {
+       duration: 0.4,
+       ease: [0.2, 0.8, 0.2, 1] as const, // 👈 Fix
+     },
+   },
+ };
+
 
   return (
     <>
