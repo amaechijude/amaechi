@@ -1,0 +1,24 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with rounded corners -->
+  <rect width="32" height="32" rx="6" ry="6" fill="url(#bgGradient)" />
+  
+  <!-- Subtle inner shadow effect -->
+  <rect x="1" y="1" width="30" height="30" rx="5" ry="5" fill="none" stroke="rgba(139, 92, 246, 0.2)" stroke-width="0.5" />
+  
+  <!-- Letter A -->
+  <path d="M16 6L10 26h3.2l1.2-4h7.2l1.2 4H26L20 6h-4zm-1.5 12l2.5-8 2.5 8h-5z" fill="url(#letterGradient)" />
+  
+  <!-- Subtle glow effect -->
+  <path d="M16 6L10 26h3.2l1.2-4h7.2l1.2 4H26L20 6h-4zm-1.5 12l2.5-8 2.5 8h-5z" fill="none" stroke="rgba(168, 85, 247, 0.3)" stroke-width="0.5" />
+</svg>

@@ -47,16 +47,31 @@ const Hero = () => {
   };
 
   const [angle, setAngle] = useState(0);
+  const [radius, setRadius] = useState(150);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setAngle((prevAngle) => prevAngle + 0.002);
     }, 50); // Adjust speed of rotation
 
-    return () => clearInterval(interval);
+    const updateRadius = () => {
+      // md breakpoint is 768px
+      if (window.innerWidth < 768) {
+        setRadius(120); // Smaller radius for mobile
+      } else {
+        setRadius(150); // Default radius for desktop
+      }
+    };
+
+    updateRadius(); // Set initial radius
+    window.addEventListener("resize", updateRadius);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", updateRadius);
+    };
   }, []);
 
-  const radius = 150; // Radius of the sphere
   const numSkills = skills.length;
 
   return (
@@ -141,12 +156,12 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Visual Element (40%) - Hidden on mobile */}
+        {/* Visual Element (40%) - Responsive */}
         <motion.div
-          className="flex w-full items-center justify-center px-4 sm:w-3/5 md:w-2/5"
+          className="mt-16 flex w-full items-center justify-center px-4 sm:w-3/5 md:mt-0 md:w-2/5"
           variants={itemVariants}
         >
-          <div className="relative hidden h-80 w-80 md:flex items-center justify-center">
+          <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80">
             {skills.map((skill, i) => {
               const phi = Math.acos(-1 + (2 * i) / numSkills);
               const theta = Math.sqrt(numSkills * Math.PI) * phi;
@@ -160,7 +175,7 @@ const Hero = () => {
               const rotatedZ = x * Math.sin(angle) + z * Math.cos(angle);
 
               const scale = (rotatedZ + radius) / (2 * radius);
-              const opacity = parseFloat((scale * 0.7 + 0.3).toFixed(2));
+              const opacity = scale * 0.7 + 0.3;
 
               return (
                 <motion.div
@@ -180,6 +195,7 @@ const Hero = () => {
             })}
           </div>
         </motion.div>
+        
       </div>
 
       <motion.div

@@ -54,6 +54,7 @@ const About = () => {
               src="/profile.jpg"
               alt="Professional headshot of Amaechi"
               fill
+              priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="transition-transform duration-500 ease-in-out hover:scale-105 object-cover"
             />
@@ -83,11 +84,12 @@ const About = () => {
             className="mt-6 text-lg text-slate-400"
             variants={itemVariants}
           >
-            For over 2 years, I&apos;ve been building robust and scalable
+            For over 1+ years, I&apos;ve been building robust and scalable
             software solutions. My journey began not just with a fascination for
             code, but with a desire to solve real-world problems. I thrive on
             the challenge of architecting systems that are not only powerful and
-            efficient but also clean, maintainable, and a pleasure to work on.
+            efficient but also clean, maintainable, and above all, solves
+            business problems and drive growth.
           </motion.p>
           <motion.p
             className="mt-4 text-lg text-slate-400"
@@ -101,9 +103,15 @@ const About = () => {
             <span className="text-violet-400 font-medium">
               modern frontend frameworks
             </span>{" "}
-            to deliver exceptional user experiences. When I&apos;m not at my
-            keyboard, you can find me exploring hiking trails or searching for
-            the perfect cup of coffee.
+            to deliver exceptional user experiences. I also mentor aspiring
+            developers at{" "}
+            <span className="text-violet-400 font-medium">Ice Hub</span>,
+            sharing knowledge and helping others grow in their web development
+            journey. When I&apos;m not coding or mentoring, you can find me
+            diving into{" "}
+            <span className="text-violet-400 font-medium">documentaries</span>,
+            catching up on sports, or enjoying a good series while planning my
+            next reading adventure.
           </motion.p>
           <motion.div className="mt-8" variants={itemVariants}>
             <Button
