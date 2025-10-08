@@ -55,11 +55,12 @@ const Hero = () => {
     }, 50); // Adjust speed of rotation
 
     const updateRadius = () => {
-      // md breakpoint is 768px
-      if (window.innerWidth < 768) {
-        setRadius(120); // Smaller radius for mobile
+      if (window.innerWidth < 640) {
+        setRadius(100); // sm breakpoint
+      } else if (window.innerWidth < 768) {
+        setRadius(120); // md breakpoint
       } else {
-        setRadius(150); // Default radius for desktop
+        setRadius(150); // lg breakpoint and up
       }
     };
 
@@ -89,7 +90,7 @@ const Hero = () => {
         <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl"></div>
       </div>
 
-      <div className="container z-10 mx-auto flex max-w-6xl flex-col items-center px-4 text-center md:flex-row md:text-left">
+      <div className="container z-10 mx-auto flex max-w-6xl flex-col-reverse items-center px-4 text-center md:flex-row md:text-left">
         {/* Text Content (60%) */}
         <motion.div className="flex w-full flex-col items-center md:w-3/5 md:items-start">
           <motion.h2
@@ -102,7 +103,7 @@ const Hero = () => {
             className="mt-2 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-600 md:text-6xl lg:text-7xl"
             variants={itemVariants}
           >
-            Amaechi
+            Amaechi Ugwu
           </motion.h1>
           <motion.p
             className="mt-4 max-w-xl text-lg text-slate-400 md:text-xl"
@@ -158,7 +159,7 @@ const Hero = () => {
 
         {/* Visual Element (40%) - Responsive */}
         <motion.div
-          className="mt-16 flex w-full items-center justify-center px-4 sm:w-3/5 md:mt-0 md:w-2/5"
+          className="mt-16 flex w-full items-center justify-center px-4 sm:w-full md:mt-0 md:w-2/5"
           variants={itemVariants}
         >
           <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80">

@@ -56,8 +56,8 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900/80 shadow-lg backdrop-blur-sm"
+       className={cn(
+          "sticky w-full top-0 z-50 transition-all duration-300 bg-slate-900/80 shadow-lg backdrop-blur-sm"
         )}
         initial="hidden"
         animate="visible"
@@ -71,7 +71,7 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop Nav */}
-          <motion.div
+         <motion.div
             className="hidden items-center gap-2 md:flex"
             variants={navbarVariants}
           >
@@ -100,7 +100,7 @@ export default function Navbar() {
           </motion.div>
 
           {/* Mobile Nav Toggle */}
-          <div className="md:hidden">
+         <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-300 hover:text-violet-400"
@@ -113,7 +113,7 @@ export default function Navbar() {
       </motion.header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+     <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-50 md:hidden">
             {/* Backdrop */}
@@ -171,5 +171,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </>
-  );
+ );
 }

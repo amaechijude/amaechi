@@ -116,10 +116,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
-        <main className="relative flex flex-col items-center justify-center bg-slate-900">
-          <Navbar />
-          {children}
-          <Footer />
+        <main className="relative flex flex-col items-center justify-center bg-slate-900 w-full">
+          <div className="max-w-7xl w-full">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
         </main>
       </body>
     </html>
