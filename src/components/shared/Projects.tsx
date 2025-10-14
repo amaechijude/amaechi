@@ -72,7 +72,7 @@ const ProjectCard = ({
         src={project.imageUrl}
         alt={`${project.title} mockup`}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes="(max-width: 768px) 100vw, 50vw"
         priority
         className="transition-transform duration-500 ease-in-out group-hover:scale-105 object-cover"
       />
@@ -167,8 +167,8 @@ const Projects = () => {
 
         <motion.div className="mt-16 text-center" variants={itemVariants}>
             <Button asChild size="lg" variant="outline" className="border-violet-500 text-violet-400 hover:bg-violet-500/10 hover:text-violet-300">
-                <Link href="#">
-                    View All Projects
+                <Link href="mailto:amaechijude178@gmail.com">
+                    Request a custom project <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </motion.div>

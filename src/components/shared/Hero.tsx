@@ -5,7 +5,7 @@ import type { Variants } from "framer-motion";
 import { Github, Linkedin, Twitter, MoveDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const skills = [
   "TypeScript",
@@ -20,7 +20,52 @@ const skills = [
   "PostgreSQL",
   "Azure",
   "gRPC",
+  ".NET"
 ];
+
+interface SkillPoint {
+  x: number;
+  y: number;
+  z: number;
+}
+
+interface AnimatedSkillProps {
+  skill: string;
+  point: SkillPoint;
+  angle: number;
+}
+
+const AnimatedSkill = ({ skill, point, angle }: AnimatedSkillProps) => {
+  const { x, y, z } = point;
+
+  // Rotate around Y-axis
+  const rotatedX = x * Math.cos(angle) - z * Math.sin(angle);
+  const rotatedZ = x * Math.sin(angle) + z * Math.cos(angle);
+
+  const radius = Math.sqrt(x * x + y * y + z * z);
+  const scale = (rotatedZ + radius) / (2 * radius);
+  const opacity = scale * 0.7 + 0.3;
+
+  return (
+    <motion.div
+      key={skill}
+      className="absolute flex items-center gap-2 rounded-full bg-slate-800/50 px-3 py-1.5 text-sm font-medium text-violet-300 shadow-md"
+      style={{
+        x: rotatedX,
+        y: y,
+        scale,
+        opacity,
+        zIndex: Math.round(scale * 100),
+      }}
+      // By passing the dynamic values directly to `style`,
+      // framer-motion can optimize updates without re-rendering the whole component.
+      // For even more optimization, you could use `useMotionValue` and `useTransform`.
+    >
+      {skill}
+    </motion.div>
+  );
+};
+
 
 const Hero = () => {
   const containerVariants: Variants = {
@@ -75,6 +120,20 @@ const Hero = () => {
 
   const numSkills = skills.length;
 
+  const skillPoints = useMemo(() => {
+    return skills.map((_, i) => {
+      const phi = Math.acos(-1 + (2 * i) / numSkills);
+      const theta = Math.sqrt(numSkills * Math.PI) * phi;
+
+      return {
+        x: radius * Math.cos(theta) * Math.sin(phi),
+        y: radius * Math.sin(theta) * Math.sin(phi),
+        z: radius * Math.cos(phi),
+      };
+    });
+  }, [radius, numSkills]);
+
+
   return (
     <motion.section
       className="relative flex min-h-[calc(100vh-64px)] w-full items-center justify-center bg-slate-900 text-slate-300"
@@ -82,9 +141,9 @@ const Hero = () => {
       initial="hidden"
       animate="visible"
     >
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden w-full">
         {/* Subtle background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-[#1a233a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-[#1a233a] w-full"></div>
         {/* Abstract shapes */}
         <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl"></div>
         <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl"></div>
@@ -163,37 +222,9 @@ const Hero = () => {
           variants={itemVariants}
         >
           <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80">
-            {skills.map((skill, i) => {
-              const phi = Math.acos(-1 + (2 * i) / numSkills);
-              const theta = Math.sqrt(numSkills * Math.PI) * phi;
-
-              const x = radius * Math.cos(theta) * Math.sin(phi);
-              const y = radius * Math.sin(theta) * Math.sin(phi);
-              const z = radius * Math.cos(phi);
-
-              // Rotate around Y-axis
-              const rotatedX = x * Math.cos(angle) - z * Math.sin(angle);
-              const rotatedZ = x * Math.sin(angle) + z * Math.cos(angle);
-
-              const scale = (rotatedZ + radius) / (2 * radius);
-              const opacity = scale * 0.7 + 0.3;
-
-              return (
-                <motion.div
-                  key={skill}
-                  className="absolute flex items-center gap-2 rounded-full bg-slate-800/50 px-3 py-1.5 text-sm font-medium text-violet-300 shadow-md"
-                  style={{
-                    x: rotatedX,
-                    y: y,
-                    scale,
-                    opacity,
-                    zIndex: Math.round(scale * 100),
-                  }}
-                >
-                  {skill}
-                </motion.div>
-              );
-            })}
+            {skillPoints.map((point, i) => (
+              <AnimatedSkill key={skills[i]} skill={skills[i]} point={point} angle={angle} />
+            ))}
           </div>
         </motion.div>
         

@@ -5,7 +5,9 @@ import type { Variants } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { resumeUrl } from "@/data/resume";
 
 const About = () => {
   const ref = useRef(null);
@@ -118,10 +120,10 @@ const About = () => {
               asChild
               className="bg-transparent border border-violet-500 text-violet-400 hover:bg-violet-500/10 hover:text-violet-300"
             >
-              <a href="/resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
+              <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="mr-2 h-4 w-4" />
+                View Resume
+              </Link>
             </Button>
           </motion.div>
         </motion.div>
