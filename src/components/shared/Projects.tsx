@@ -73,7 +73,6 @@ const ProjectCard = ({
         alt={`${project.title} mockup`}
         fill
         sizes="(max-width: 768px) 100vw, 50vw"
-        priority
         className="transition-transform duration-500 ease-in-out group-hover:scale-105 object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent"></div>
@@ -123,7 +122,7 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };

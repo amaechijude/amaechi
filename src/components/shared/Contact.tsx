@@ -13,7 +13,7 @@ const Contact = () => {
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,19 +1,33 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import About from "@/components/shared/About";
-import Contact from "@/components/shared/Contact";
-import Experience from "@/components/shared/Experience";
-import Projects from "@/components/shared/Projects";
-import Skills from "@/components/shared/Skills";
-import Testimonials from "@/components/shared/Testimonials";
-import Services from "@/components/shared/Services";
+
+const About = dynamic(() => import("@/components/shared/About"), {
+  ssr: false,
+});
+const Contact = dynamic(() => import("@/components/shared/Contact"), {
+  ssr: false,
+});
+const Experience = dynamic(() => import("@/components/shared/Experience"), {
+  ssr: false,
+});
+const Projects = dynamic(() => import("@/components/shared/Projects"), {
+  ssr: false,
+});
+const Skills = dynamic(() => import("@/components/shared/Skills"), {
+  ssr: false,
+});
+const Testimonials = dynamic(() => import("@/components/shared/Testimonials"), {
+  ssr: false,
+});
+const Services = dynamic(() => import("@/components/shared/Services"), {
+  ssr: false,
+});
+const Hero = dynamic(() => import("@/components/shared/Hero"), {
+  ssr: false,
+});
 
 export default function Home() {
-  const Hero = dynamic(() => import("@/components/shared/Hero"), {
-    ssr: false,
-  });
-
   return (
     <>
       <Hero />

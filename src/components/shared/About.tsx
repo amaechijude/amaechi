@@ -18,7 +18,7 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -56,7 +56,6 @@ const About = () => {
               src="/profile.jpg"
               alt="Professional headshot of Amaechi"
               fill
-              priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="transition-transform duration-500 ease-in-out hover:scale-105 object-cover"
             />

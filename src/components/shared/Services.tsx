@@ -23,7 +23,7 @@ const Services = () => {
     visible: (i: number) => ({
       opacity: 1,
       scale: 1,
-      transition: { delay: i * 0.15, duration: 0.5 },
+      transition: { delay: i * 0.07, duration: 0.5 },
     }),
   };
 

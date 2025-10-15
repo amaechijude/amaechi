@@ -112,7 +112,7 @@ const Testimonials = () => {
 
         <motion.div
           className="mt-16 columns-1 gap-6 sm:columns-2 lg:columns-3"
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
         >
           {testimonialsData.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
