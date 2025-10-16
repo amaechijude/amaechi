@@ -138,14 +138,14 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } },
 };
 
 // Main Component
 const Skills = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.02 });
 
   return (
     <motion.section

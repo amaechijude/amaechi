@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   },
   description: `The portfolio of Amaechi, a software engineer and mentor specializing in building 
     scalable web applications and empowering developers through technical writing and mentorship.`,
+    verification: {
+    google: "qjrrf8x5SOEkBDFSgslu6oE-BAPyIa7fYy-248nf_p8",
+  },
   keywords: [
     "Software Engineer",
     "Software Developer",
@@ -77,7 +80,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "Amaechi - Senior Software Engineer & Mentor",
     description:
-      "Building scalable web applications and empowering developers.",
+      "The portfolio of Amaechi, a software engineer and mentor specializing in building scalable web applications and empowering developers.",
     siteName: "Amaechi's Portfolio",
     images: [
       {
@@ -92,10 +95,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Amaechi - Software Engineer & Mentor",
     description:
-      "Building scalable web applications and empowering developers.",
+      "The portfolio of Amaechi, a software engineer and mentor specializing in building scalable web applications and empowering developers.",
     creator: "@amaechi_1",
     site: "@amaechi_1",
     images: [`${siteUrl}/profile.jpg`],
+  },
+  alternates: {
+    canonical: siteUrl,
   },
 
   icons: {
