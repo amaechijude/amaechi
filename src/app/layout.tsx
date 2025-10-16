@@ -14,9 +14,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: Update metadataBase with your production domain.
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.amaechiugwu.space";
 
 export const metadata: Metadata = {
   title: {
@@ -117,11 +116,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         <main className="relative flex flex-col items-center justify-center bg-slate-900 w-full">
-          <div className="max-w-7xl w-full">
             <Navbar />
             {children}
             <Footer />
-          </div>
         </main>
       </body>
     </html>
