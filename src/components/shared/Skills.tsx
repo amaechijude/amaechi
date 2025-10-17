@@ -1,8 +1,5 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import type { Variants } from "framer-motion";
-import { useRef } from "react";
 import { CheckCircle, Code, Cloud, Database, GitMerge, TestTube, Users, BrainCircuit, FileText, HardDrive, Server, Boxes, Globe, Settings, Radio, Network, Terminal, Layers, MousePointer, Palette } from "lucide-react";
 
 
@@ -12,8 +9,20 @@ const philosophyData: { text: string; id: number }[]= [
   { text: "Every technical decision is a business decision in disguise; understanding the 'why' is paramount.", id: 2 },
   { text: "Code quality isn't a feature, it's the foundation of sustainable velocity.", id: 3 },
 ];
+interface TechBody {
+  name: string;
+  context: string;
+  icon: React.ReactNode;
+}
 
-const technologiesData = {
+interface TechnologiesData {
+  backend: TechBody[];
+  devops_cloud: TechBody[];
+  frontend: TechBody[];
+  data: TechBody[];
+}
+
+const technologiesData: TechnologiesData= {
   backend: [
     {
       name: "C# & .NET",
@@ -131,67 +140,48 @@ const practicesData = [
   { title: "Team Collaboration", description: "Clear communication and a shared vision are key. I use tools like Linear and Slack to keep everyone in sync.", icon: <Users /> },
 ];
 
-// Animation Variants
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.07 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } },
-};
-
 // Main Component
 const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.02 });
-
   return (
-    <motion.section
+    <section
       id="skills"
-      ref={ref}
-      className="w-full bg-slate-900 py-20 md:py-32"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
+      className="w-full bg-slate-900 py-20 md:py-32 min-h-full"
     >
       <div className="container mx-auto max-w-6xl px-4">
         {/* Section Header */}
-        <motion.div className="text-center" variants={itemVariants}>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">Skills & Approach</h2>
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-violet-400 sm:text-4xl">Skills & Approach</h2>
           <p className="mt-4 text-lg text-slate-400">Engineering philosophy meets modern technology.</p>
-        </motion.div>
+        </div>
 
         {/* Part 1: Philosophy */}
-        <motion.div className="mx-auto mt-12 max-w-3xl space-y-6" variants={containerVariants}>
+        <div className="mx-auto mt-12 max-w-3xl space-y-6">
           {philosophyData.map((item) => (
-            <motion.div
+            <div
               key={item.id}
-              variants={itemVariants}
               className="rounded-lg border border-slate-800 bg-slate-800/50 p-6 text-center text-lg italic text-slate-300 shadow-md"
             >
               <BrainCircuit className="mx-auto mb-2 h-6 w-6 text-violet-400" />
               {item.text}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Divider */}
-        <motion.div variants={itemVariants} className="mx-auto my-16 h-px w-2/3 bg-slate-700"></motion.div>
+        <div className="mx-auto my-16 h-px w-2/3 bg-slate-700"></div>
 
         {/* Parts 2 & 3: Grid */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
           {/* Part 2: Core Technologies */}
-          <motion.div variants={containerVariants}>
-            <motion.h3 variants={itemVariants} className="text-2xl font-bold text-slate-200 mb-6">Core Technologies</motion.h3>
+          <div>
+            <h3 className="text-2xl font-bold text-slate-200 mb-6">Core Technologies</h3>
             <div className="space-y-8">
               {Object.entries(technologiesData).map(([category, techs]) => (
-                <motion.div key={category} variants={itemVariants}>
+                <div key={category}>
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-violet-400 mb-4">{category.replace('-', ' & ')}</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {techs.map((tech) => (
-                      <div key={tech.name} className="group flex items-center space-x-4 rounded-lg border border-slate-800 bg-slate-800/50 p-4 transition-all hover:bg-slate-700/50 hover:border-violet-500/50">
+                    {techs.map((tech: TechBody) => (
+                      <div key={tech.name} className="group flex items-center space-x-4 rounded-lg border border-slate-800 bg-slate-800/50 p-4 hover:bg-slate-700/50 hover:border-violet-500/50">
                         <div className="text-violet-400">{tech.icon}</div>
                         <div>
                           <p className="font-semibold text-slate-200">{tech.name}</p>
@@ -200,17 +190,17 @@ const Skills = () => {
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Part 3: Engineering Practices */}
-          <motion.div variants={containerVariants}>
-            <motion.h3 variants={itemVariants} className="text-2xl font-bold text-slate-200 mb-6">Engineering Practices</motion.h3>
+          <div>
+            <h3 className="text-2xl font-bold text-slate-200 mb-6">Engineering Practices</h3>
             <div className="space-y-6">
               {practicesData.map((practice) => (
-                <motion.div key={practice.title} variants={itemVariants} className="flex items-start space-x-4 rounded-lg border border-transparent p-4">
+                <div key={practice.title} className="flex items-start space-x-4 rounded-lg border border-transparent p-4">
                   <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-violet-500/10 text-violet-400">
                     {practice.icon}
                   </div>
@@ -218,13 +208,13 @@ const Skills = () => {
                     <p className="font-semibold text-slate-200">{practice.title}</p>
                     <p className="text-slate-400">{practice.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

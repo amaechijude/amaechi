@@ -1,7 +1,5 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Briefcase, Star } from "lucide-react";
 
 interface TimelineItem {
@@ -69,63 +67,36 @@ const timelineData: TimelineItem[] = [
 ];
 
 const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-
-  const itemVariants = (fromLeft = true) => ({
-    hidden: { opacity: 0, x: fromLeft ? -50 : 50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring" as const, stiffness: 100 },
-    },
-  });
-
   return (
-    <motion.section
+    <section
       id="experience"
-      ref={ref}
       className="w-full bg-slate-900 py-20 md:py-32"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
     >
       <div className="container mx-auto max-w-6xl px-4">
-        <motion.div
+        <div
           className="text-center"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { duration: 0.5 } },
-          }}
         >
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-violet-400 sm:text-4xl">
             Experience & Impact
           </h2>
           <p className="mt-4 text-lg text-slate-400">
             Building software and empowering developers.
           </p>
-        </motion.div>
+        </div>
 
         <div className="relative mt-16">
           {/* Timeline Spine */}
           <div className="absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 transform bg-slate-700 md:block"></div>
 
-          <motion.div className="space-y-12" variants={containerVariants}>
+          <div className="space-y-12">
             {timelineData.map((item, index) => {
               const isPro = item.type === "professional";
-              const fromLeft = isPro;
 
               return (
-                <motion.div
+                <div
                   key={index}
                   className="relative w-full md:flex md:items-center"
                   style={{ justifyContent: isPro ? "flex-start" : "flex-end" }}
-                  variants={itemVariants(fromLeft)}
                 >
                   {/* Mobile Spine */}
                   <div className="absolute left-0 top-0 h-full w-1 bg-slate-700 md:hidden"></div>
@@ -164,13 +135,13 @@ const Experience = () => {
                       </ul>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

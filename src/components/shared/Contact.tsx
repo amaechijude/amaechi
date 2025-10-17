@@ -1,54 +1,26 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import type { Variants } from "framer-motion";
-import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Briefcase, GraduationCap, Mail, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const itemVariants: any = (fromLeft = true) => ({
-    hidden: { opacity: 0, x: fromLeft ? -50 : 50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring", stiffness: 100 },
-    },
-  });
-
   return (
-    <motion.section
+    <section
       id="contact"
-      ref={ref}
       className="w-full bg-slate-900 py-20 md:py-32"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
     >
       <div className="container mx-auto max-w-5xl px-4">
-        <motion.div className="text-center" variants={itemVariants()}>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-violet-400 sm:text-4xl">
             Let&apos;s Build Something Together
           </h2>
           <p className="mt-4 text-lg text-slate-400">
             Whether you need a senior developer or want to become one.
           </p>
-        </motion.div>
+        </div>
 
         <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
           {/* Professional Track */}
-          <motion.div
-            variants={itemVariants(true)}
+          <div
             className="flex flex-col rounded-lg border border-slate-700 bg-slate-800 p-8 shadow-lg transition-all duration-300 hover:border-violet-500/50 hover:shadow-violet-500/10"
           >
             <div className="flex items-center space-x-4">
@@ -88,11 +60,10 @@ const Contact = () => {
                 </Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
           {/* Mentoring Track */}
-          <motion.div
-            variants={itemVariants(false)}
+          <div
             className="flex flex-col rounded-lg border border-slate-700 bg-slate-800 p-8 shadow-lg transition-all duration-300 hover:border-violet-500/50 hover:shadow-violet-500/10"
           >
             <div className="flex items-center space-x-4">
@@ -118,10 +89,10 @@ const Contact = () => {
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
