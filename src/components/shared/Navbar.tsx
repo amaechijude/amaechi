@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useActiveSection } from "@/lib/use-active-section";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -18,9 +19,25 @@ const NAV_ITEMS = [
   { label: "Contact", href: "/#contact" },
 ];
 
+const SECTION_IDS = NAV_ITEMS
+  .map(item => item.href.startsWith('/#') ? item.href.substring(2) : null)
+  .filter((id): id is string => id !== null);
+
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const activeSection = useActiveSection(SECTION_IDS);
+  const [activeHref, setActiveHref] = useState(pathname);
+
+  useEffect(() => {
+    let currentHref = pathname;
+    if (pathname === '/' && activeSection) {
+      currentHref = `/#${activeSection}`;
+    }
+    setActiveHref(currentHref);
+  }, [pathname, activeSection]);
+
 
   // Animation variants
   const navbarVariants = {
@@ -30,7 +47,7 @@ export default function Navbar() {
       y: 0,
       transition: {
         duration: 0.3,
-        ease: [0.2, 0.8, 0.2, 1] as const, // 👈 Fix
+        ease: [0.2, 0.8, 0.2, 1] as const,
         staggerChildren: 0.05,
       },
     },
@@ -48,7 +65,7 @@ export default function Navbar() {
      opacity: 1,
      transition: {
        duration: 0.4,
-       ease: [0.2, 0.8, 0.2, 1] as const, // 👈 Fix
+       ease: [0.2, 0.8, 0.2, 1] as const,
      },
    },
  };
@@ -82,11 +99,11 @@ export default function Navbar() {
                   href={item.href}
                   className={cn(
                     "relative rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:text-violet-400",
-                    pathname === item.href && "text-violet-400"
+                    activeHref === item.href && "text-violet-400"
                   )}
                 >
                   {item.label}
-                  {pathname === item.href && (
+                  {activeHref === item.href && (
                     <motion.span
                       layoutId="active-underline"
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500"
@@ -157,7 +174,7 @@ export default function Navbar() {
                       onClick={() => setIsOpen(false)}
                       className={cn(
                         "block rounded-md px-4 py-2 text-lg font-medium",
-                        pathname === item.href
+                        activeHref === item.href
                           ? "bg-violet-500/10 text-violet-300"
                           : "text-slate-300 hover:bg-slate-800"
                       )}

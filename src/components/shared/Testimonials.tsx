@@ -1,7 +1,3 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 
@@ -65,8 +61,7 @@ const testimonialsData: TestimonialProps[] = [
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: TestimonialProps }) => (
-  <motion.div
-    variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
+  <div
     className="break-inside-avoid mb-6 flex flex-col rounded-lg border border-slate-700 bg-slate-800 p-6 shadow-lg transition-all duration-300 hover:border-violet-500/50 hover:shadow-violet-500/10 hover:-translate-y-1"
   >
     <Quote className="h-8 w-8 text-violet-500" />
@@ -85,41 +80,32 @@ const TestimonialCard = ({ testimonial }: { testimonial: TestimonialProps }) => 
         <p className="text-sm text-slate-400">{testimonial.title}</p>
       </div>
     </div>
-  </motion.div>
+  </div>
 );
 
 const Testimonials = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
-    <motion.section
+    <section
       id="testimonials"
-      ref={ref}
       className="w-full bg-slate-900 py-20 md:py-32"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
     >
       <div className="container mx-auto max-w-6xl px-4">
-        <motion.div
+        <div
           className="text-center"
-          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">What People Say</h2>
           <p className="mt-4 text-lg text-slate-400">Professional impact meets life-changing mentorship.</p>
-        </motion.div>
+        </div>
 
-        <motion.div
+        <div
           className="mt-16 columns-1 gap-6 sm:columns-2 lg:columns-3"
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
         >
           {testimonialsData.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
