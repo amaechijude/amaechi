@@ -14,13 +14,16 @@ const skills = [
   "C#",
   "Dotnet",
   "Python",
+  "Django",
+  "FastAPI",
   "Tailwind CSS",
-  "Framer Motion",
   "Docker",
   "PostgreSQL",
   "Azure",
   "gRPC",
-  ".NET"
+  ".NET",
+  "REST",
+  "API",
 ];
 
 interface SkillPoint {
@@ -48,6 +51,7 @@ const AnimatedSkill = ({ skill, point, angle }: AnimatedSkillProps) => {
 
   return (
     <motion.div
+    suppressHydrationWarning
       key={skill}
       className="absolute flex items-center gap-2 rounded-full bg-slate-800/50 px-3 py-1.5 text-sm font-medium text-violet-300 shadow-md"
       style={{
@@ -57,9 +61,6 @@ const AnimatedSkill = ({ skill, point, angle }: AnimatedSkillProps) => {
         opacity,
         zIndex: Math.round(scale * 100),
       }}
-      // By passing the dynamic values directly to `style`,
-      // framer-motion can optimize updates without re-rendering the whole component.
-      // For even more optimization, you could use `useMotionValue` and `useTransform`.
     >
       {skill}
     </motion.div>
@@ -153,7 +154,7 @@ const Hero = () => {
         {/* Text Content (60%) */}
         <motion.div className="flex w-full flex-col items-center md:w-3/5 md:items-start">
           <motion.h2
-            className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-violet-400"
+            className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-white"
             variants={itemVariants}
           >
             Software Engineer
