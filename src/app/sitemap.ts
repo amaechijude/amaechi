@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { posts } from '@/lib/blog-data';
-
-const siteUrl = 'https://www.amaechiugwu.space';
+import { siteUrl } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
