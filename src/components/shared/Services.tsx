@@ -9,7 +9,7 @@ const Services = () => {
     <section id="services" className="w-full py-20 md:py-32 bg-[#0f172a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">{title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-violet-400">{title}</h2>
           <p className="mt-4 text-lg text-[#cbd5e1]">{subtitle}</p>
         </div>
 

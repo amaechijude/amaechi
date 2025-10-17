@@ -32,7 +32,7 @@ const About = () => {
           className="col-span-1 flex flex-col justify-center md:col-span-3"
         >
           <h2
-            className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl"
+            className="text-3xl font-bold tracking-tight text-violet-400 sm:text-4xl"
           >
             About Me
           </h2>

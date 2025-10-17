@@ -14,8 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.amaechiugwu.space";
+const siteUrl = "https://www.amaechiugwu.space";
 
 export const metadata: Metadata = {
   title: {

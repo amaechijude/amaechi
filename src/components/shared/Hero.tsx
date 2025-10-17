@@ -153,7 +153,7 @@ const Hero = () => {
         {/* Text Content (60%) */}
         <motion.div className="flex w-full flex-col items-center md:w-3/5 md:items-start">
           <motion.h2
-            className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
+            className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-violet-400"
             variants={itemVariants}
           >
             Software Engineer

@@ -10,7 +10,7 @@ const Contact = () => {
     >
       <div className="container mx-auto max-w-5xl px-4">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-violet-400 sm:text-4xl">
             Let&apos;s Build Something Together
           </h2>
           <p className="mt-4 text-lg text-slate-400">
