@@ -38,41 +38,39 @@ const About = () => {
           </h2>
           <div>
             <blockquote className="mt-6 border-l-4 border-violet-500 pl-4 text-xl italic text-slate-300">
-              &quot;I believe the best software comes from a deep understanding
-              of both the technical challenges and the human needs they
-              serve.&quot;
+              &quot;Great software starts with solid backend architecture. I build
+              robust systems that scale, perform, and deliver exceptional user experiences.&quot;
             </blockquote>
           </div>
           <p
             className="mt-6 text-lg text-slate-400"
           >
-            For over 1+ years, I&apos;ve been building robust and scalable
-            software solutions. My journey began not just with a fascination for
-            code, but with a desire to solve real-world problems. I thrive on
-            the challenge of architecting systems that are not only powerful and
-            efficient but also clean, maintainable, and above all, solves
-            business problems and drive growth.
+            As a backend-focused Full-Stack Developer with 1+ years of experience,
+            I specialize in building scalable APIs, microservices, and robust system
+            architectures. My passion lies in creating high-performance backend solutions
+            using C#, .NET, and Python, while seamlessly integrating with modern frontend
+            technologies to deliver complete, end-to-end applications.
           </p>
           <p
             className="mt-4 text-lg text-slate-400"
           >
-            Currently, I&apos;m focused on leveraging{" "}
+            My expertise spans{" "}
             <span className="text-violet-400 font-medium">
-              serverless architectures
+              RESTful APIs, microservices architecture, and database design
             </span>{" "}
-            and{" "}
+            using technologies like{" "}
             <span className="text-violet-400 font-medium">
-              modern frontend frameworks
+              PostgreSQL, Docker, and Azure cloud services
             </span>{" "}
-            to deliver exceptional user experiences. I also mentor aspiring
-            developers at{" "}
-            <span className="text-violet-400 font-medium">Ice Hub</span>,
-            sharing knowledge and helping others grow in their web development
-            journey. When I&apos;m not coding or mentoring, you can find me
-            diving into{" "}
-            <span className="text-violet-400 font-medium">documentaries</span>,
-            catching up on sports, or enjoying a good series while planning my
-            next reading adventure.
+            . I also mentor aspiring developers at{" "}
+            <Link href="https://www.icehub-ng.com/index.html" target="_blank" rel="noopener noreferrer">
+            <span className="text-violet-400 font-medium">Ice Hub</span>,</Link>
+            sharing backend development best practices and system design principles.
+            When I&apos;m not architecting systems or mentoring, you can find me
+            exploring{" "}
+            <span className="text-violet-400 font-medium">new backend technologies</span>,
+            contributing to open-source projects, or diving into technical documentation
+            to stay ahead of the curve.
           </p>
           <div className="mt-8">
             <Button

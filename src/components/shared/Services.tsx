@@ -27,7 +27,7 @@ const Services = () => {
               {development.services.map((service) => (
                 <div
                   key={service.name}
-                  className="bg-[#1e293b] p-6 rounded-lg border border-transparent hover:border-[#8b5cf6]"
+                  className="bg-[#1e293b] p-6 rounded-lg border border-transparent hover:border-[#8b5cf6] hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start mb-4">
                     <service.icon className="w-8 h-8 text-[#8b5cf6] mr-4 mt-1" />
@@ -45,13 +45,20 @@ const Services = () => {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <div className="flex justify-between items-center text-sm text-gray-500 ml-12">
-                    <span>{service.timeline}</span>
-                    <span>{service.pricing}</span>
+                  <div className="flex justify-between items-center text-sm ml-12">
+                    <span className="text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700/50">
+                      {service.timeline}
+                    </span>
+                    <span className="text-violet-300 bg-violet-900/30 px-3 py-1 rounded-full border border-violet-700/50 font-medium">
+                      {service.pricing}
+                    </span>
                   </div>
                   <div className="text-right mt-4">
                     <Link href="mailto:amaechijude178@gmail.com">
-                      <Button variant="link" className="text-[#8b5cf6]">
+                      <Button 
+                        variant="link" 
+                        className="text-violet-400 hover:text-violet-300 hover:bg-violet-900/20 px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/20"
+                      >
                         {service.link}
                       </Button>
                     </Link>
@@ -74,7 +81,7 @@ const Services = () => {
               {mentoring.services.map((service) => (
                 <div
                   key={service.name}
-                  className="bg-[#1e293b] p-6 rounded-lg border border-transparent hover:border-[#8b5cf6]"
+                  className="bg-[#1e293b] p-6 rounded-lg border border-transparent hover:border-[#8b5cf6] hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start mb-4">
                     <service.icon className="w-8 h-8 text-[#8b5cf6] mr-4 mt-1" />
@@ -92,13 +99,20 @@ const Services = () => {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <div className="flex justify-between items-center text-sm text-gray-500 ml-12">
-                    <span>{service.timeline}</span>
-                    <span>{service.pricing}</span>
+                  <div className="flex justify-between items-center text-sm ml-12">
+                    <span className="text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700/50">
+                      {service.timeline}
+                    </span>
+                    <span className="text-violet-300 bg-violet-900/30 px-3 py-1 rounded-full border border-violet-700/50 font-medium">
+                      {service.pricing}
+                    </span>
                   </div>
                   <div className="text-right mt-4">
                     <Link href="mailto:amaechijude178@gmail.com">
-                      <Button variant="link" className="text-[#8b5cf6]">
+                      <Button 
+                        variant="link" 
+                        className="text-violet-400 hover:text-violet-300 hover:bg-violet-900/20 px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/20"
+                      >
                         {service.link}
                       </Button>
                     </Link>

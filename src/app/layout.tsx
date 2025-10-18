@@ -17,27 +17,27 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Amaechi - Software Engineer & Mentor",
+    default: "Amaechi - Full-Stack Developer & Backend Specialist",
     template: "%s | Amaechi",
   },
-  description: `The portfolio of Amaechi, a software engineer and mentor specializing in building 
-    scalable web applications and empowering developers through technical writing and mentorship.`,
+  description: `Full-Stack Developer specializing in backend architecture and scalable web applications. 
+    Expert in C#, .NET, Python, and modern frontend technologies with a passion for building robust systems.`,
     verification: {
     google: "qjrrf8x5SOEkBDFSgslu6oE-BAPyIa7fYy-248nf_p8",
   },
   keywords: [
-    "Software Engineer",
+    "Full-Stack Developer",
+    "Backend Developer",
+    "Backend Engineer",
+    "Full-Stack Engineer",
     "Software Developer",
-    "Software",
-    "Engineer",
-    "Developer",
+    "Software Engineer",
     "Amaechi Ugwu",
     "Amaechi",
     "Ugwu",
-    "Front-End Developer",
-    "Back-End Developer",
-    "Full-Stack Engineer",
-    "Full-Stack",
+    "Backend Specialist",
+    "API Developer",
+    "System Architect",
     "Web Developer",
     "React Developer",
     "Next.js Developer",
@@ -76,24 +76,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Amaechi - Senior Software Engineer & Mentor",
+    title: "Amaechi - Full-Stack Developer & Backend Specialist",
     description:
-      "The portfolio of Amaechi, a software engineer and mentor specializing in building scalable web applications and empowering developers.",
+      "Full-Stack Developer with deep backend expertise. Specializing in scalable web applications, API development, and system architecture using C#, .NET, and Python.",
     siteName: "Amaechi's Portfolio",
     images: [
       {
         url: "/profile.jpg", // Make sure to create and place this file in the /public directory
         width: 1200,
         height: 630,
-        alt: "Amaechi - Software Engineer & Mentor",
+        alt: "Amaechi - Full-Stack Developer & Backend Specialist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amaechi - Software Engineer & Mentor",
+    title: "Amaechi - Full-Stack Developer & Backend Specialist",
     description:
-      "The portfolio of Amaechi, a software engineer and mentor specializing in building scalable web applications and empowering developers.",
+      "Full-Stack Developer with deep backend expertise. Specializing in scalable web applications, API development, and system architecture using C#, .NET, and Python.",
     creator: "@amaechi_1",
     site: "@amaechi_1",
     images: [`${siteUrl}/profile.jpg`],

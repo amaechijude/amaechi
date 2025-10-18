@@ -8,22 +8,22 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect, useMemo } from "react";
 
 const skills = [
-  "TypeScript",
-  "React",
-  "Next.js",
   "C#",
-  "Dotnet",
+  ".NET",
   "Python",
   "Django",
   "FastAPI",
-  "Tailwind CSS",
-  "Docker",
   "PostgreSQL",
   "Azure",
+  "Docker",
   "gRPC",
-  ".NET",
-  "REST",
-  "API",
+  "REST API",
+  "Microservices",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "System Design",
 ];
 
 interface SkillPoint {
@@ -137,7 +137,7 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="relative flex min-h-[calc(100vh-64px)] w-full items-center justify-center bg-slate-900 text-slate-300"
+      className="relative flex min-h-screen w-full items-center justify-center bg-slate-900 text-slate-300 py-4 sm:py-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -154,26 +154,26 @@ const Hero = () => {
         {/* Text Content (60%) */}
         <motion.div className="flex w-full flex-col items-center md:w-3/5 md:items-start">
           <motion.h2
-            className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-white"
+            className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl text-white"
             variants={itemVariants}
           >
-            Software Engineer
+            Full-Stack Developer
           </motion.h2>
           <motion.h1
-            className="mt-2 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-600 md:text-6xl lg:text-7xl"
+            className="mt-1 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-600 sm:text-5xl md:text-6xl lg:text-7xl"
             variants={itemVariants}
           >
             Amaechi Ugwu
           </motion.h1>
           <motion.p
-            className="mt-4 max-w-xl text-lg text-slate-400 md:text-xl"
+            className="mt-3 max-w-xl text-base text-slate-400 sm:text-lg md:text-xl"
             variants={itemVariants}
           >
-            Building scalable, high-performance web applications with modern
-            technologies and a passion for clean code.
+            Backend-focused Full-Stack Developer specializing in scalable APIs, 
+            microservices architecture, and robust system design with C#, .NET, and Python.
           </motion.p>
           <motion.div
-            className="mt-8 flex flex-col gap-4 sm:flex-row"
+            className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4"
             variants={itemVariants}
           >
             <Button
@@ -192,7 +192,7 @@ const Hero = () => {
               <Link href="#contact">Get In Touch</Link>
             </Button>
           </motion.div>
-          <motion.div className="mt-8 flex space-x-6" variants={itemVariants}>
+          <motion.div className="mt-6 flex space-x-6" variants={itemVariants}>
             <Link
               href="https://github.com/amaechijude"
               target="_blank"
@@ -219,10 +219,10 @@ const Hero = () => {
 
         {/* Visual Element (40%) - Responsive */}
         <motion.div
-          className="mt-16 flex w-full items-center justify-center px-4 sm:w-full md:mt-0 md:w-2/5"
+          className="mt-8 flex w-full items-center justify-center px-4 sm:mt-12 md:mt-0 md:w-2/5"
           variants={itemVariants}
         >
-          <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80">
+          <div className="relative flex h-48 w-48 items-center justify-center sm:h-56 sm:w-56 md:h-64 md:w-64">
             {skillPoints.map((point, i) => (
               <AnimatedSkill key={skills[i]} skill={skills[i]} point={point} angle={angle} />
             ))}
@@ -232,12 +232,12 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-8"
+        className="absolute bottom-4 sm:bottom-8"
         variants={itemVariants}
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <MoveDown className="h-6 w-6 text-slate-500" />
+        <MoveDown className="h-5 w-5 sm:h-6 sm:w-6 text-slate-500" />
       </motion.div>
     </motion.section>
   );
